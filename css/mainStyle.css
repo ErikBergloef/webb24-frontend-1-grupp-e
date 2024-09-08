@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} /* universal grund css för hela projektet */
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+} /* allting inuti body får dessa egenskaper som grund */
+
+.container {
+    display: flex;
+    width: 100%;
+} /* klassen container som utgör hela grunden för sidomenyn */
+
+.sidebar {
+    width: 10%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    height: 100vh; 
+} /* sidomenyns klass */
+
+.sidebar nav ul {
+    list-style-type: none;
+} /* den o-ordnade listans klass */
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+} /* klass för listobjektet inuti den o-ordnadelistan */
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+} /* klass för a-taggen inuti listobjektet */
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+} /* klass för i-taggen inuti a-taggen */
+
+.sidebar nav ul li a:hover {
+    text-decoration: underline;
+} /* klass för hovereffekt på a-taggen */
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+} /* klass för huvudinnehållet */
+
+h1 {
+    margin-bottom: 20px;
+} /* klass för h1 inuti huvud innehåll  */
