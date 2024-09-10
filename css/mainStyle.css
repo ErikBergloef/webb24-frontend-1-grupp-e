@@ -1,61 +1,81 @@
-* {
+* {  /* universal grund css för hela projektet */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
 
-
-} /* universal grund css för hela projektet */
-
-body {
+body {  /* allting inuti body får dessa egenskaper som grund */
     display: flex;
     height: 100vh;
     margin: 0;
-} /* allting inuti body får dessa egenskaper som grund */
+} 
 
-.container {
+.container { /* klassen container som utgör hela grunden för innehållet i body */
     display: flex;
     width: 100%;
-} /* klassen container som utgör hela grunden för sidomenyn */
+    background-color: gray; /* lägger till en bakgrund bakom allting som är går */
+} 
 
-.sidebar {
+.sidebar { /* sidomenyns klass */
     width: 5%;
     background-color: #252525;
-    /* color: rgb(255, 255, 255); */
     padding:20px;
     height: 100vh; 
-} /* sidomenyns klass */
+    margin-right: 3px; /*skapar det gråa strecket mellan huvudinnehållet och sidobaren */
+    position: relative; /* För tooltip-positionering */
+} 
 
-.sidebar nav ul {
+.sidebar nav ul { /* den o-ordnade listans klass */
     list-style-type: none;
-} /* den o-ordnade listans klass */
+} 
 
-.sidebar nav ul li {
+.sidebar nav ul li { /* klass för listobjektet inuti den o-ordnadelistan */
     margin-bottom: 15px;
-} /* klass för listobjektet inuti den o-ordnadelistan */
+} 
 
-.sidebar nav ul li a {
+.sidebar nav ul li a { /* klass för a-taggen inuti listobjektet */
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
     display: flex;
-    justify-content: center;
-} /* klass för a-taggen inuti listobjektet */
+    justify-content: center;  
+    position: relative; /* Gör det möjligt att placera tooltipen relativt till länken */
+} 
 
-.sidebar nav ul li a i {
-    margin-right: 10px;
-} /* klass för i-taggen inuti a-taggen */
+.sidebar nav ul li a::after { /* psuedo elementet after för a-taggen inuti list-objektet */
+    content: attr(data-tooltip); /* Tooltip-texten tas från data-tooltip-attributet */
+    position: absolute;
+    top: 50%;  /* Tooltippen centreras vertikalt i förhållande till ikonen */
+    left: 110%; /* Tooltippen placeras till höger om ikonen */
+    transform: translateY(-50%); /* Justerar för att hålla tooltippen vertikalt centrerad */
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap; /* Hindrar texten från att brytas */
+    font-size: 12px;
+    z-index: 1;
+    opacity: 0; /* Göms tills man hovrar */
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s; /* Mjuk övergång */
+}
 
-.sidebar nav ul li a:hover {
-    text-decoration: underline;
-} /* klass för hovereffekt på a-taggen - ordna en funktion som skapar text/tooltip när användaren hovrar över ikonen */
+.sidebar nav ul li a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
 
 .content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 30px;
     background-color: #f4f4f4;
 } /* klass för huvudinnehållet */
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 } /* klass för h1 inuti huvud innehåll  */
+
+main h2 {
+    margin-top: 20px;
+}
