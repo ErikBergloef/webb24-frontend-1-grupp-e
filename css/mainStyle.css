@@ -1,81 +1,177 @@
-* {  /* universal grund css för hela projektet */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-} 
-
-body {  /* allting inuti body får dessa egenskaper som grund */
-    display: flex;
-    height: 100vh;
-    margin: 0;
-} 
-
-.container { /* klassen container som utgör hela grunden för innehållet i body */
-    display: flex;
-    width: 100%;
-    background-color: gray; /* lägger till en bakgrund bakom allting som är går */
-} 
-
-.sidebar { /* sidomenyns klass */
-    width: 5%;
-    background-color: #252525;
-    padding:20px;
-    height: 100vh; 
-    margin-right: 3px; /*skapar det gråa strecket mellan huvudinnehållet och sidobaren */
-    position: relative; /* För tooltip-positionering */
-} 
-
-.sidebar nav ul { /* den o-ordnade listans klass */
-    list-style-type: none;
-} 
-
-.sidebar nav ul li { /* klass för listobjektet inuti den o-ordnadelistan */
-    margin-bottom: 15px;
-} 
-
-.sidebar nav ul li a { /* klass för a-taggen inuti listobjektet */
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;  
-    position: relative; /* Gör det möjligt att placera tooltipen relativt till länken */
-} 
-
-.sidebar nav ul li a::after { /* psuedo elementet after för a-taggen inuti list-objektet */
-    content: attr(data-tooltip); /* Tooltip-texten tas från data-tooltip-attributet */
-    position: absolute;
-    top: 50%;  /* Tooltippen centreras vertikalt i förhållande till ikonen */
-    left: 110%; /* Tooltippen placeras till höger om ikonen */
-    transform: translateY(-50%); /* Justerar för att hålla tooltippen vertikalt centrerad */
-    background-color: #333;
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    white-space: nowrap; /* Hindrar texten från att brytas */
-    font-size: 12px;
-    z-index: 1;
-    opacity: 0; /* Göms tills man hovrar */
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s; /* Mjuk övergång */
 }
 
-.sidebar nav ul li a:hover::after {
-    opacity: 1;
-    visibility: visible;
+/* Hela skärmens grund-css */
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
 }
 
 .content {
     flex-grow: 1;
-    padding: 30px;
-    background-color: #f4f4f4;
-} /* klass för huvudinnehållet */
+    display:flex;
+    justify-content: center;
+    
+}
 
-h1 {
-    margin-bottom: 30px;
-} /* klass för h1 inuti huvud innehåll  */
+.footer {
+    position: fixed;
+    bottom: 0; /* Sätter menyn i botten */
+    left: 0;
+    width: 100%; /* Full bredd för sidomenyn */
+    background-color: #252525;
+    padding: 10px 0; /* Padding runt ikonerna */
+    display: flex;
+    justify-content: space-around; /* Sprid ut ikonerna horisontellt */
+    z-index: 100; /* Högre z-index så att den alltid är synlig */
+}
 
-main h2 {
-    margin-top: 20px;
+/* Gör ikonerna och texten vertikalt centrerade */
+.footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+.footer nav ul li {
+    list-style-type: none;
+}
+
+.footer nav ul li a {
+    position: relative; /* gör att tooltip hamnar ovanför respektive ikon */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column; /* Ikon och text placeras i kolumn */
+    align-items: center; /* Centrerar ikon och text horisontellt */
+    font-size: 14px; /* Justera textstorleken om nödvändigt */
+}
+
+.footer nav ul li a i {
+    font-size: 30px; /* Gör ikonen större (ändra storleken här) */
+}
+
+/* Förstora tooltippen om nödvändigt */
+.footer nav ul li a::after {
+    font-size: 14px; /* Större tooltip-text om önskas */ }
+
+/* Tooltip-funktion för ikoner */
+.footer nav ul li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -24px; /* Tooltip visas ovanför ikonen */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: 12px;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.footer nav ul li a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================================= */
+/* ===============Header============ */
+/* ================================= */
+
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    background-color: #333;
+    height: 50px;
+    align-items: center;
+    
+}
+
+header h1 {
+    color: white;
+    font-size: 20px; 
+    padding-left: 10px; 
+}
+
+/* ================================= */
+/* ========Grid i Explore tab======= */
+/* ================================= */
+
+.parent {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    max-width: 100%;
+    height: 80%;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 3 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 1 / 3 / 2 / 4; }
+    .div4 { grid-area: 2 / 2 / 3 / 3; }
+    .div5 { grid-area: 3 / 1 / 4 / 2; }
+    .div6 { grid-area: 3 / 2 / 4 / 3; }
+    .div7 { grid-area: 2 / 3 / 4 / 4; }
+
+/* ================================= */
+/* ========Vid större skärmar====== */
+/* ================================= */
+
+@media (min-width:768px) {
+    .footer nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 150px;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        width: 100%;
+    } 
+    .footer nav ul li a i { /* gör ikonen större vid större skärm */
+        font-size: 35px; 
+    }   
+}
+
+@media (min-width:1200px) { /* gör ikonen ännu större vid ännu större skärm */
+    .footer nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 250px;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        width: 100%;
+    }    
+    .footer nav ul li a i {
+        font-size: 40px;  
+    }
 }
