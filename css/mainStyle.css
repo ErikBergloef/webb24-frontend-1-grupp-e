@@ -1,5 +1,4 @@
-
-/* ================Main Styles=================*/
+/* =========== Reset & Global Styles =========== */
 
 * {
     margin: 0;
@@ -11,29 +10,131 @@
 body, html {
     height: 100%;
     margin: 0;
+    background-color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
+    flex-direction: column; /* Låt innehållet flöda från toppen */
 }
+
+/* =============== Layout Styles =============== */
 
 .container {
-    width: 100%;
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
-
 
 .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Justera placeringen till toppen */
+    flex: 1;
+    padding: 60px 20px 60px; 
+    background-color: #f9f9f9;
 }
 
+/* =============== Header Styles =============== */
 
-/* ===============Footer Style=================*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 100;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* =============== Post Styles =============== */
+
+.post {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.post-header, .post-description {
+    padding: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-actions i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.post-description p {
+    margin-top: 5px;
+}
+
+/* =============== Grid Layout =============== */
+
+.parent-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.grid-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+/* =============== Footer Styles =============== */
 
 .footer {
     position: fixed;
@@ -44,7 +145,7 @@ body, html {
     padding: 10px 0;
     display: flex;
     justify-content: space-around;
-    z-index: 100;
+    z-index: 100; /* Ser till att footer är ovanpå allt annat content */
 }
 
 .footer nav ul {
@@ -84,7 +185,7 @@ body, html {
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s;
 }
 
 .footer nav ul li a:hover::after {
@@ -92,111 +193,29 @@ body, html {
     visibility: visible;
 }
 
-/* ===============Header Styling===============*/
+/* =============== Media Queries =============== */
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 0;
-    margin-top: 0;
+@media (min-width: 1024px) {
+    .post {
+        width: 80%; 
+        max-width: none; 
+    }
 }
 
-header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    background-color: #333;
-    height: 50px;
-    align-items: center;
+@media (max-width: 800px) {
+    .parent {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
 }
 
-header h1 {
-    color: white;
-    font-size: 20px;
-    padding-left: 10px;
+@media (max-width: 480px) {
+    .post {
+        width: 90%;
+    }
 }
-
-/* ==================Post Styling======================*/
-
-.post {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    margin-top: 50px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.post-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.username {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.post-image img {
-    width: 100%;
-    height: auto;
-}
-
-.post-actions {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-
-.post-actions i {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.post-description {
-    padding: 10px;
-}
-
-.post-description p {
-    margin: 5px 0;
-}
-
-/* ===========Grid styling - Explore===========*/
-
-.parent-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
-    max-width: 85%;
-    height: 80%;
-}
-
-
-/* ===============MediaQueries=================*/
 
 @media (max-width: 768px) {
-
     .footer nav ul {
         gap: 20px;
     }
@@ -207,43 +226,11 @@ header h1 {
 }
 
 @media (max-width: 480px) {
-
     .footer nav ul {
         gap: 10px;
     }
 
     .footer nav ul li a i {
         font-size: 24px;
-    }
-}
-
-@media (min-width: 768px) {
-    .footer nav ul {
-        gap: 150px;
-    }
-
-    .footer nav ul li a i {
-        font-size: 35px;
-    }
-}
-
-/* Grid mediaquery */
-
-@media screen and (max-width: 800px) {
-    .parent {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-
-    }
-    
-}
-
-@media (min-width: 1200px) {
-    .footer nav ul {
-        gap: 250px;
-    }
-
-    .footer nav ul li a i {
-        font-size: 40px;
     }
 }
