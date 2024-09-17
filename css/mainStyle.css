@@ -28,7 +28,8 @@ body, html {
 .content {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start; /* Justera placeringen till toppen */
 }
 
 
@@ -95,6 +96,10 @@ body, html {
 
 main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 header {
@@ -118,6 +123,7 @@ header h1 {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
+    margin-top: 50px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -168,7 +174,6 @@ header h1 {
 .post-description p {
     margin: 5px 0;
 }
-
 
 /* ===========Grid styling - Explore===========*/
 
