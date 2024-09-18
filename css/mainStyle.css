@@ -18,7 +18,7 @@ body, html {
 /* =============== Layout Styles =============== */
 
 .container {
-    max-width: 1200px;
+    width: 100vw;
     margin: 0 auto;
     flex: 1;
     display: flex;
@@ -59,7 +59,7 @@ header h1 {
 
 .post {
     width: 100%;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 20px auto;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -68,9 +68,8 @@ header h1 {
     padding: 10px;
 }
 
-
 .post-header, .post-description {
-    padding: 15px;
+    padding: 10px;
 }
 
 .post-header {
@@ -88,11 +87,7 @@ header h1 {
 
 .username {
     font-weight: bold;
-    font-size: 25px;
-}
-
-.post-paragraph {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .post-image img {
@@ -109,7 +104,7 @@ header h1 {
 }
 
 .post-actions i {
-    font-size: 40px;
+    font-size: 24px;
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -229,21 +224,26 @@ header h1 {
 
 /* ===================== POST ================*/
 
-@media (min-width: 1024px) {
+
+
+@media (max-width: 1024px) {
     .post {
-        width: 80%; 
-        max-width: none; 
+       max-width: 85%
     }
 }
 
+@media (max-width: 800px) {
+    .post {
+        width: 75%;  
+    }
+}
 
 @media (max-width: 480px) {
     .post {
-        width: 90%;
+        width: 70%; 
+        padding: 5px; 
     }
-    
 }
-
 
 /* ================== HEADER ================= */
 
